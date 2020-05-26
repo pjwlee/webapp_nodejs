@@ -1,0 +1,23 @@
+{
+  "name": "webapp_nodejs",
+  "version": "1.0.0",
+  "description": "create a demo web app using node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pjwlee/webapp_nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pjwlee/webapp_nodejs/issues"
+  },
+  "homepage": "https://github.com/pjwlee/webapp_nodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodeunit": "^0.11.3"
+  }
+}

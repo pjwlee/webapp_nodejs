@@ -12,11 +12,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('port', port);
 
 
-// login page
-app.get('/', function (req, res) {
-  res.send('hello world');
-  res.end();
-})
+// the login page
+app.get('/', function(req, res) {
+  fs.access('./login.html', function(err){
+    if (err) {
+      res.statusCode=404;
+      res.end();
+      return;
+    }
+    else {
+      fs.readFile('./login.html', 'utf-8', function (err, data) {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end(data);
+        console.log("loaded: login");
+      });
+    }
+  });
+});
 
 
 // a server starts listening

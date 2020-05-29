@@ -9,9 +9,41 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <style>
+        header.masthead{
+            text-align:center;
+            color:white;
+            background-image:url('white-blank-notebook-733857.jpg');
+            background-repeat:no-repeat;
+            background-attachment:scroll;
+            background-position:center center;
+            background-size:coverl;
+            width:100vw;
+            height:100vh;
+        }
+    </style>
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+  <body id="top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#top">Navbar</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle Navigation">Menu<i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navabar-nav text-uppercase ml-auto">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#clink1">Click1</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#clink2">Click2</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#clink3">Click3</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#clink4">Click4</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#clink5">Click5</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="masthead">
+        <div class="container">
+            <div class="intro-text"></div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

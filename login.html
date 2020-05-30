@@ -4,46 +4,50 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta name="description" content="node.js, demo">
+    <meta name="author" content="Paul Lee">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
     <title>Hello, world!</title>
-    <style>
-        header.masthead{
-            text-align:center;
-            color:white;
-            background-image:url('white-blank-notebook-733857.jpg');
-            background-repeat:no-repeat;
-            background-attachment:scroll;
-            background-position:center center;
-            background-size:coverl;
-            width:100vw;
-            height:100vh;
+    <style> 
+        html,
+        body {
+          height: 100%;
         }
+        body {
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-align: center;
+          align-items: center;
+          padding-top: 40px;
+          padding-bottom: 40px;
+          background-color: #f5f5f5;
+        }
+ 
     </style>
   </head>
-  <body id="top">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#top">Navbar</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle Navigation">Menu<i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navabar-nav text-uppercase ml-auto">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#clink1">Click1</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#clink2">Click2</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#clink3">Click3</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#clink4">Click4</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#clink5">Click5</a></li>
-                </ul>
-            </div>
+
+  <body class="text-center">
+    <div id="widget-container"></div>
+    <form class="form-signin" method="post" action="/login">
+        <img class="mb-4" src="" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Paul's Demo Site</h1>
+        <h3 class="h3 mb-3 font-weight-normal">Please log in</h3>
+        
+        <label for="inputEmail" class="sr-only" >Email address</label>
+        <input type="email" id="email" class="form-control" name="email" placeholder="Email address" required autofocus>
+        
+        <label for="inputPassword" class="sr-only" >Password</label>
+        <input type="password" id="password" class="form-control" name="password" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me </input>
+            </label>
         </div>
-    </nav>
-    <div class="masthead">
-        <div class="container">
-            <div class="intro-text"></div>
-        </div>
-    </div>
+        <button class="btn btn-md btn-primary btn-block" type="submit">Log in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+    </form>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

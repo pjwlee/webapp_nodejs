@@ -13,7 +13,8 @@
         <meta name="author" content="Paul Lee">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <style>body{padding-top:60px;}</style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>body{padding-top: 60px;}</style>
         <title>Paul's Demo: Main</title>
     </head>
 
@@ -32,15 +33,15 @@
                 </div>
                 <div class="collapse navbar-collapse" id="target">
                     <ul class="nav navbar-nav">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/web">Web</a></li>
-                    <li><a href="/data">Data</a></li>
-                    <li><a href="/qa">QA</a></li>  
-                    <li><a href="/visual">Visual</a></li>            
+                    <li class="nav active"><a href="/home">Home</a></li>
+                    <li class="nav"><a href="/web">Web</a></li>
+                    <li class="nav"><a href="/data">Data</a></li>
+                    <li class="nav"><a href="/qa">QA</a></li>  
+                    <li class="nav"><a href="/visual">Visual</a></li>            
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/admin">Admin</a></li>
+                    <li class="nav"><a href="/login">Login</a></li>
+                    <li class="nav"><a href="/admin">Admin</a></li>
                     </ul>
                     <form class="nav navbar-form navbar-right" action="https://www.google.com/search" class="searchform" method="get" name="searchform" target="_blank">
                     <input autocomplete="on" class="form-control search" name="q" placeholder="Search in Google.com" required="required"  type="text">
@@ -57,71 +58,60 @@
                     <ul id = 'menu' class='nav nav-list span3'>
                     <li class='nav-header'>&nbsp;</li> 
                     <li class='nav-header'><b>Home</b></li>
-                    <li><a href="#home"></a></li>
-                    <li><a href="#menu1">New Feature</a></li>
-                    <li><a href="#menu2">Watch</a></li>        
+                    <li><a href="#home">About</a></li>
+                    <li><a href="#menu1">Contact</a></li>      
                     </ul>
                 </div>
     
                 <div class="col-md-9">
                     <ul class="nav nav-tabs">
                     <legend>Paul's Demo</legend>
-                    <li class="active"><a data-toggle="tab" href="#home">Bug Report</a></li>
-                    <li><a data-toggle="tab" href="#menu1">New Feature</a></li>
-                    <li><a data-toggle="tab" href="#menu2">Watch</a></li>
+                    <li class="active"><a data-toggle="tab" href="#home">About</a></li>
+                    <li><a data-toggle="tab" href="#menu1">Contact</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="home" class="tab-pane fade in active">   
-                            <fieldset>
-                            <legend><h4>06.01.2020</h4></legend>
-                            <ul>
-                            <li>Test
-                            <ul> 
-                            <li> a							
-                            </ul>	
-                            </li>
-                            <li>Query
-                            <ul>
-                            <li> b
-                            <li>  													
-                            </ul>	
-                            </li>	
-                            <li>Data
-                            <ul>
-                            <li> c
-                            </ul>	
-                            </li>		
-                            <li>Outliers
-                            <ul>
-                            <li> d
-                            </ul>	
-                            </li>								
-                            </ul>	
-                            </li>
-                            </ul>
-                            </fieldset>
-    
+                            <legend>
+                                <ul class="list-group list-inline">
+                                    <li class="borderless">
+                                        Love analyzing data & developing web apps
+                                    </li>
+                                </ul>    
+                            </legend>
+                            <ul class="list-group ">
+
+                                <li class="borderless">
+                                    <i class="glyphicon glyphicon-user" style="font-size:18px"></i>  Paul Lee 
+                                </li>
+                                <li class="borderless">
+                                    
+                                </li>
+                            </ul>        
                             <br/>
                         </div>
                         <div id="menu1" class="tab-pane fade">  
-                            <legend><h4>New</h4></legend>
-                            <ul>
-                            <li> v
-                            <ul>
-                            <li> e
-                            </ul>	
-                            </li>	
-                            </li>
+                            <legend>
+                                <ul class="list-group list-inline">
+                                    <li class="borderless">
+                                        Contact me if you have questions
+                                    </li>
+                                </ul>    
+                            </legend>
+                            <ul class="list-group ">
+                                <li class="borderless">
+                                    <i class="fa fa-google" style="font-size:18px"></i> pjwlee@gmail.com
+                                </li>
+                                <li class="borderless">
+                                    <i class="fa fa-github" style="font-size:18px"></i> https://github.com/pjwlee
+                                </li>
+                                <li class="borderless">
+                                    <i class="fa fa-linkedin" style="font-size:18px"></i>  https://www.linkedin.com/in/paul-lee-05276a62
+                                </li>
+                            </ul>       
                             <br/>                   
                         </div>
-                        <div id="menu2" class="tab-pane fade">  
-                            <legend><h4>Watch</h4></legend>
-                            <p>Monitor this application</p> 
-                            <br/>   
-                        </div> 
                     </div>                          
                 </div>
-    
             </div>        
         </div>
 

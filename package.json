@@ -19,6 +19,7 @@
   "homepage": "https://github.com/pjwlee/webapp_nodejs#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "nodeunit": "^0.11.3"
+    "nodeunit": "^0.11.3",
+    "socket.io": "^2.3.0"
   }
 }

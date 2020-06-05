@@ -1,27 +1,36 @@
 // import modules
-var http = require('http');
-var express = require('express');
-var fs = require('fs');
-var path = require('path');
+const http = require('http');
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const socketid = require('socket.io');
 
 
 // set up environment
 const port = process.env.PORT || 3000;
 const app = express();
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static(path.join(__dirname, 'html')));
+app.use('/static', express.static(path.join(__dirname, 'css')));
+app.use('/static', express.static(path.join(__dirname, 'js')));
+app.use('/static', express.static(path.join(__dirname, 'img')));
 app.set('port', port);
+
+
+// set up a middleware
+app.use(app.router);
 
 
 // main page
 app.get('/', function(req, res) {
-  fs.access('./main.html', function(err){
+  fs.access('./static/html/main.html', function(err){
     if (err) {
       res.statusCode=404;
       res.end();
       return;
     }
     else {
-      fs.readFile('./main.html', 'utf-8', function (err, data) {
+      fs.readFile('./static/html/main.html', 'utf-8', function (err, data) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.end(data);
         console.log("loaded: main");
@@ -33,14 +42,14 @@ app.get('/', function(req, res) {
 
 // login page
 app.get('/login', function(req, res) {
-	fs.access('./login.html', function(err){
+	fs.access('./static/html/login.html', function(err){
 		if (err) {
 			res.statusCode=404;
 			res.end();
 			return;
 		}
 		else {
-			fs.readFile('./login.html', 'utf-8', function (err, dat) {
+			fs.readFile('./static/html/login.html', 'utf-8', function (err, dat) {
 				res.writeHead(200, {'Content-Type': 'text/html'});
 				res.end(dat);
 				console.log("loaded: login")
@@ -53,7 +62,7 @@ app.get('/login', function(req, res) {
 // admin Page
 app.get('/admin', function(req, res) {
     try {
-      fs.readFile('./admin.html', 'utf-8', function (err, dat) {
+      fs.readFile('./static/html/admin.html', 'utf-8', function (err, dat) {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write('<!doctype html>');
         res.write('<html lang="en">');
@@ -84,6 +93,7 @@ app.get('/admin', function(req, res) {
     res.redirect('/');
   }
 });	
+
 
 
 // a server starts listening

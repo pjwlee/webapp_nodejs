@@ -17,8 +17,8 @@ app.use('/static', express.static(path.join(__dirname, 'img')));
 app.set('port', port);
 
 
-// set up a middleware
-app.use(app.router);
+// (DEPECATED !) set up a middleware
+// app.use(app.router);
 
 
 // main page
@@ -94,9 +94,21 @@ app.get('/admin', function(req, res) {
   }
 });	
 
-
+var seats = [
+  [1,1,0,1,1,1,1,1,0,1,1],
+  [1,1,0,1,1,1,1,1,0,1,1],
+  [1,1,0,1,1,1,1,1,0,1,1]
+];
 
 // a server starts listening
-app.listen(app.get('port'), function() {
+var server = app.listen(app.get('port'), function() {
     console.log('app listening on port %s', port);
+}); 
+
+var io = socketid.listen(server);
+io.sockets.on('connection', function (socket) {
+  socket.on('reserver', function (dat) {
+    seats[dat.y][dat.x] = 2;
+    io.sockets.emit('reserve',dat);
+[]  })
 });

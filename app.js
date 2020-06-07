@@ -94,6 +94,26 @@ app.get('/admin', function(req, res) {
   }
 });	
 
+
+// reservation page
+app.get('/reserv', function(req, res) {
+	fs.access('./static/html/air_ticket_resv.html', function(err){
+		if (err) {
+			res.statusCode=404;
+			res.end();
+			return;
+		}
+		else {
+			fs.readFile('./static/html/air_ticket_resv.html', 'utf-8', function (err, dat) {
+				res.writeHead(200, {'Content-Type': 'text/html'});
+				res.end(dat);
+				console.log("loaded: reservation")
+			});
+		}
+	});
+});
+
+
 var seats = [
   [1,1,0,1,1,1,1,1,0,1,1],
   [1,1,0,1,1,1,1,1,0,1,1],
@@ -106,9 +126,14 @@ var server = app.listen(app.get('port'), function() {
 }); 
 
 var io = socketid.listen(server);
+// io.set('log level', 2); // not valid?
+
+// test socket.io
 io.sockets.on('connection', function (socket) {
-  socket.on('reserver', function (dat) {
-    seats[dat.y][dat.x] = 2;
-    io.sockets.emit('reserve',dat);
-[]  })
+  socket.on('rint', function (data) {
+    console.log('client sent data: ', data);
+    io.sockets.emit('smart', data);
+    // seats[dat.y][dat.x] = 2;
+    // io.sockets.emit('reserve',dat);
+  });
 });

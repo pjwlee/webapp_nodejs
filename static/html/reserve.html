@@ -54,7 +54,7 @@
                 var y = $(this).attr('dat.y');
 
                 if (confirm('want?') == true) {
-                    $(this).off('clcik');
+                    $(this).off('click');
                     socket.emit('reserve', {
                         x: x,
                         y: y

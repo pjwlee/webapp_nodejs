@@ -97,16 +97,17 @@ app.get('/admin', function(req, res) {
 
 // reservation page
 app.get('/reserv', function(req, res) {
-	fs.access('./static/html/air_ticket_resv.html', function(err){
+	fs.access('./static/html/reserve.html', function(err){
 		if (err) {
 			res.statusCode=404;
 			res.end();
 			return;
 		}
 		else {
-			fs.readFile('./static/html/air_ticket_resv.html', 'utf-8', function (err, dat) {
-				res.writeHead(200, {'Content-Type': 'text/html'});
-				res.end(dat);
+			fs.readFile('./static/html/reserve.html', 'utf-8', function (err, dat) {
+				// res.writeHead(200, {'Content-Type': 'text/html'});
+        // res.end(dat);
+        res.send(dat.toString());
 				console.log("loaded: reservation")
 			});
 		}
@@ -120,20 +121,29 @@ var seats = [
   [1,1,0,1,1,1,1,1,0,1,1]
 ];
 
+
+app.get('/seat', function (req, res) {
+  res.send(seats);
+});
+
+
+
 // a server starts listening
 var server = app.listen(app.get('port'), function() {
     console.log('app listening on port %s', port);
 }); 
 
+
 var io = socketid.listen(server);
 // io.set('log level', 2); // not valid?
 
+
 // test socket.io
 io.sockets.on('connection', function (socket) {
-  socket.on('rint', function (data) {
-    console.log('client sent data: ', data);
-    io.sockets.emit('smart', data);
-    // seats[dat.y][dat.x] = 2;
-    // io.sockets.emit('reserve',dat);
+  socket.on('reserve', function (dat) {
+    console.log('client sent data: ', dat);
+    // io.sockets.emit('smart', dat);
+    seats[dat.y][dat.x] = 9;
+    io.sockets.emit('reserve',dat);
   });
 });

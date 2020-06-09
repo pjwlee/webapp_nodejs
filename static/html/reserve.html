@@ -15,6 +15,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>body{padding-top: 60px;}</style>
+        <style>
+            .line {overflow: hideen }
+            .seat {
+                margin: 2px
+            }
+        </style>
         <title>Paul's Demo: Airline Ticket Reservation</title>
     </head>
 
@@ -64,8 +70,29 @@
                     alert('cancelled');
                 }
             };
+        
+        $.getJASON('/seats', { dummy: new Date().getTime()}, function (data) {
+            $.each(data, function (indexY, line) {
+                var $line = $('<div><div>').addClass('line');
+                $.each(line, function (indexX, seat) {
+                    var $output = $('<div></div>', {
+                        'class': 'seat',
+                        'data-x': indexX,
+                        'data-y': indexY
+                    }).appendTo($line);
 
+                
+                if (seat == 1) {
+                    $output.addClass('enavle').on('click', onClickSeat);
+                } 
+                else if (seat == 9) {
+                    $output.addClass('disable');
+                }
+           });
+           $line.appendTo('body');
+        });
        });
+    });
     </script>
 
 

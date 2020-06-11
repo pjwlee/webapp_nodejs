@@ -16,22 +16,20 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>body{padding-top: 60px;}</style>
         <style>
-            .line {overflow: hideen }
+            .line { overflow: hidden; }
             .seat {
                 margin: 2px; float: left;
                 width: 30px; height: 30px;
-                border-radius:30px;
+                border-radius: 30px;
             }
             .enable { background: gray; }
             .enable:hover { background: black; }
             .disable { background: red; }
         </style>
         <title>Paul's Demo: Airline Ticket Reservation</title>
-    </head>
 
 
-
-    <!-- Optional JavaScript -->
+   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -40,8 +38,8 @@
     <script>
         var socket = io.connect();
 
-        socket.on('reserve', function (dat) {
-            var $target = $('div[dat-x= ' + dat.x + '][dat.y = '+ dat.y + ']');
+        socket.on('reserve', function (data) {
+            var $target = $('div[data-x= ' + data.x + '][data.y = '+ data.y + ']');
             $target.removeClass('enable');
             $target.addClass('disable');
         });
@@ -54,9 +52,9 @@
     </script>
     <script>
         $(document).ready(function () {
-            var onclickSeat = function () {
-                var x = $(this).attr('dat.x');
-                var y = $(this).attr('dat.y');
+            var onClickSeat = function () {
+                var x = $(this).attr('data.x');
+                var y = $(this).attr('data.y');
 
                 if (confirm('want?') == true) {
                     $(this).off('click');
@@ -70,34 +68,40 @@
                 }
             };
         
-        $.getJASON('/seats', { dummy: new Date().getTime()}, function (data) {
-            $.each(data, function (indexY, line) {
-                var $line = $('<div><div>').addClass('line');
-                $.each(line, function (indexX, seat) {
-                    var $output = $('<div></div>', {
-                        'class': 'seat',
-                        'data-x': indexX,
-                        'data-y': indexY
-                    }).appendTo($line);
+            $.getJSON('/seats', { dummy: new Date().getTime()}, function (data) {
+                $.each(data, function (indexY, line) {
+                    var $line = $('<div><div>').addClass('line');
+                    $.each(line, function (indexX, seat) {
+                        var $output = $('<div></div>', {
+                            'class': 'seat',
+                            'data-x': indexX,
+                            'data-y': indexY
+                        }).appendTo($line);
+                    
+                        if (seat == 1) 
+                        {
+                            $output.addClass('enavle').on('click', onClickSeat);
+                        } 
+                        else if (seat == 9) 
+                        {
+                            $output.addClass('disable');
+                        }
+                    });
 
-                
-                if (seat == 1) {
-                    $output.addClass('enavle').on('click', onClickSeat);
-                } 
-                else if (seat == 9) {
-                    $output.addClass('disable');
-                }
-           });
-           $line.appendTo('body');
+                    $line.appendTo('body');
+                });
+            });
         });
-       });
-    });
-    </script>
+    </script>        
+    </head>
+
+
+
+ 
 
 
 <body>
-    
-</body>
 
 </body>
+
 </html>

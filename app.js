@@ -17,6 +17,12 @@ app.use('/static', express.static(path.join(__dirname, 'img')));
 app.set('port', port);
 
 
+var seats = [
+  [1,1,0,1,1,1,1,1,0,1,1],
+  [1,1,0,1,1,1,1,1,0,1,1],
+  [1,1,0,1,1,1,1,1,0,1,1]
+];
+
 // (DEPECATED !) set up a middleware
 // app.use(app.router);
 
@@ -104,22 +110,16 @@ app.get('/reserv', function(req, res) {
 			return;
 		}
 		else {
-			fs.readFile('./static/html/reserve.html', 'utf-8', function (err, dat) {
+			fs.readFile('./static/html/reserve.html', 'utf-8', function (err, data) {
 				// res.writeHead(200, {'Content-Type': 'text/html'});
         // res.end(dat);
-        res.send(dat.toString());
+        res.send(data.toString());
 				console.log("loaded: reservation")
 			});
 		}
 	});
 });
 
-
-var seats = [
-  [1,1,0,1,1,1,1,1,0,1,1],
-  [1,1,0,1,1,1,1,1,0,1,1],
-  [1,1,0,1,1,1,1,1,0,1,1]
-];
 
 
 app.get('/seat', function (req, res) {
@@ -140,10 +140,10 @@ var io = socketid.listen(server);
 
 // test socket.io
 io.sockets.on('connection', function (socket) {
-  socket.on('reserve', function (dat) {
-    console.log('client sent data: ', dat);
+  socket.on('reserve', function (data) {
+    console.log('client sent data: ', data);
     // io.sockets.emit('smart', dat);
-    seats[dat.y][dat.x] = 9;
-    io.sockets.emit('reserve',dat);
+    seats[data.y][data.x] = 9;
+    io.sockets.emit('reserve', data);
   });
 });

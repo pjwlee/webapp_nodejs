@@ -122,7 +122,7 @@ app.get('/reserv', function(req, res) {
 
 
 
-app.get('/seat', function (req, res) {
+app.get('/seats', function (req, res) {
   res.send(seats);
 });
 

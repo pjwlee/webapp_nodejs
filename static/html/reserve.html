@@ -35,11 +35,12 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
+
     <script>
         var socket = io.connect();
 
         socket.on('reserve', function (data) {
-            var $target = $('div[data-x= ' + data.x + '][data.y = '+ data.y + ']');
+            var $target = $('div[data-x= ' + data.x + '][data-y = '+ data.y + ']');
             $target.removeClass('enable');
             $target.addClass('disable');
         });
@@ -53,8 +54,8 @@
     <script>
         $(document).ready(function () {
             var onClickSeat = function () {
-                var x = $(this).attr('data.x');
-                var y = $(this).attr('data.y');
+                var x = $(this).attr('data-x');
+                var y = $(this).attr('data-y');
 
                 if (confirm('want?') == true) {
                     $(this).off('click');
@@ -80,7 +81,7 @@
                     
                         if (seat == 1) 
                         {
-                            $output.addClass('enavle').on('click', onClickSeat);
+                            $output.addClass('enable').on('click', onClickSeat);
                         } 
                         else if (seat == 9) 
                         {
@@ -95,9 +96,6 @@
     </script>        
     </head>
 
-
-
- 
 
 
 <body>

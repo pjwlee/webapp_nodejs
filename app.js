@@ -18,18 +18,9 @@ app.set('port', port);
 
 
 var seats = [
-  [1,1,0,1,1,0,0,0,0,1,1,0,1,1],
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1],
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1],
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1],  
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1],
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1],
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1],  
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1],
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1],
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1],  
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1],
-  [1,1,0,1,1,1,1,1,1,1,1,0,1,1]
+  [1,1,0,1,1],
+  [1,1,0,1,1],
+  [1,1,0,1,1]
 ];
 
 // (DEPECATED !) set up a middleware
@@ -74,6 +65,25 @@ app.get('/login', function(req, res) {
 });
 
 
+
+// web page
+app.get('/web', function(req, res) {
+	fs.access('./static/html/reserve.html', function(err){
+		if (err) {
+			res.statusCode=404;
+			res.end();
+			return;
+		}
+		else {
+			fs.readFile('./static/html/reserve.html', 'utf-8', function (err, dat) {
+				res.writeHead(200, {'Content-Type': 'text/html'});
+				res.end(dat);
+				console.log("loaded: login")
+			});
+		}
+	});
+});
+
 // admin Page
 app.get('/admin', function(req, res) {
     try {
@@ -108,27 +118,6 @@ app.get('/admin', function(req, res) {
     res.redirect('/');
   }
 });	
-
-
-// reservation page
-app.get('/reserve', function(req, res) {
-	fs.access('./static/html/reserve.html', function(err){
-		if (err) {
-			res.statusCode=404;
-			res.end();
-			return;
-		}
-		else {
-			fs.readFile('./static/html/reserve.html', 'utf-8', function (err, data) {
-				// res.writeHead(200, {'Content-Type': 'text/html'});
-        // res.end(dat);
-        res.send(data.toString());
-				console.log("loaded: reservation")
-			});
-		}
-	});
-});
-
 
 
 app.get('/seats', function (req, res) {

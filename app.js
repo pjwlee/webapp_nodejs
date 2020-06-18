@@ -84,6 +84,7 @@ app.get('/web', function(req, res) {
 	});
 });
 
+
 // admin Page
 app.get('/admin', function(req, res) {
     try {
@@ -124,6 +125,24 @@ app.get('/seats', function (req, res) {
   res.send(seats);
 });
 
+
+
+app.get('/test', function(req, res) {
+	fs.access('./static/html/test.html', function(err){
+		if (err) {
+			res.statusCode=404;
+			res.end();
+			return;
+		}
+		else {
+			fs.readFile('./static/html/test.html', 'utf-8', function (err, dat) {
+				res.writeHead(200, {'Content-Type': 'text/html'});
+				res.end(dat);
+				console.log("loaded: test")
+			});
+		}
+	});
+});
 
 
 // a server starts listening

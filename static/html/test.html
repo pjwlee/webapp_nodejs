@@ -35,13 +35,14 @@
             var request = getXMLHTTPRequest();
 
             function callAjax() {
-                var lname = 'Paul';
+                var lname = document.form1.myname.value;
                 var url = "localhost.php?lastname=" + lname;
+                var rndm = parseInt(Math.random()*9999999);
 
-                request.open("GET", url, true);
+                request.open("GET", url + "&rand=" + rndm, true);
                 request.pmreadustatechaneg = responseAjax;
 
-                request.send(null);00
+                request.send(null);
             }
             
         </script>
@@ -49,7 +50,13 @@
 
 
     <body>
+        <form name = 'form1'>
+            Name: <input type='text' name='myname'
+                        onBlur='callAjax()'><br>
+            Tel: <input type='text' name='teln'><br>
+            <input type='submit'>
 
+        </form>
     </body>
 
 </html>

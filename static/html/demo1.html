@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+
+    <head>
+        <!--[if lt IE9]>
+        <script src="http:/html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="node.js, demo">
+        <meta name="author" content="Paul Lee">
+        <style>
+        </style>
+        <title>Paul's Demo: Airline Ticket Reservation</title>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  
+    </head>
+
+
+<body>
+    <p>time : <span id="time"></span></p>
+    <input type="button" id="execute" value="execute" />
+    <script>
+    document.querySelector('input').addEventListener('click', function(event){
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', './time.php');
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                document.querySelector('#time').innerHTML = xhr.responseText;
+            }
+        }
+        xhr.send(); 
+    }); 
+    </script>    
+</body>
+
+
+</html>

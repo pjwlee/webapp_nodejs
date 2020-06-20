@@ -128,14 +128,14 @@ app.get('/seats', function (req, res) {
 
 
 app.get('/test', function(req, res) {
-	fs.access('./static/html/test.html', function(err){
+	fs.access('./static/html/demo1.html', function(err){
 		if (err) {
 			res.statusCode=404;
 			res.end();
 			return;
 		}
 		else {
-			fs.readFile('./static/html/test.html', 'utf-8', function (err, dat) {
+			fs.readFile('./static/html/demo1.html', 'utf-8', function (err, dat) {
 				res.writeHead(200, {'Content-Type': 'text/html'});
 				res.end(dat);
 				console.log("loaded: test")

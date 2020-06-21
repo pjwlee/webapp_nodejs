@@ -145,6 +145,25 @@ app.get('/test', function(req, res) {
 });
 
 
+// lists
+app.get('/home_list', function(req, res) {
+	fs.access('./static/html/home_list', function(err){
+		if (err) {
+			res.statusCode=404;
+			res.end();
+			return;
+		}
+		else {
+			fs.readFile('./static/html/home_list', 'utf-8', function (err, dat) {
+				res.writeHead(200, {'Content-Type': 'text'});
+				res.end(dat);
+				console.log("loaded: home_list")
+			});
+		}
+	});
+});
+
+
 // a server starts listening
 var server = app.listen(app.get('port'), function() {
     console.log('app listening on port %s', port);
